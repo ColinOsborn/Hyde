@@ -1,8 +1,23 @@
 #!/usr/bin/env ruby
+require "pry"
+require_relative "../lib/hyde"
 
-args = ARGV
-puts "You ran Hyde with these arguments: #{args}"
+# args = ARGV
+method = ARGV[0]
+location = ARGV[1]
 
-# ##############
-# Your code here
-# ##############
+Hyde.new(method, location)
+
+
+# if method == "new"
+# else
+#   "dslakjf"
+# end
+#
+# puts "You ran Hyde with these arguments: #{args}"
+
+Dir.mkdir(location)
+
+def new(location)
+  Dir.mkdir(location)
+end
