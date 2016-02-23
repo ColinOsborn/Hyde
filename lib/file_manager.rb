@@ -1,8 +1,4 @@
-#!/usr/bin/env ruby
-
-class Hyde
-
-  attr_accessor :dir
+class FileManager
 
   def initialize(filename)
     if Dir.exist?(filename)
@@ -21,6 +17,8 @@ class Hyde
       File.write(filename + "/source/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "")
     end
   end
+
+  
 
 end
 
