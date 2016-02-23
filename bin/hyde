@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'pry'
+require_relative '../lib/hyde'
+
+
+
+
+puts "\n\nwhy\n\n"

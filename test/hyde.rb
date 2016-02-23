@@ -12,13 +12,13 @@ class Hyde
       Dir.mkdir(filename + "/_output")
       Dir.mkdir(filename + "/source")
       Dir.mkdir(filename + "/source/css")
-      Dir.mkdir(filename + "/source/css/main.css")
-      Dir.mkdir(filename + "/source/index.markdown")
       Dir.mkdir(filename + "/source/pages")
-      Dir.mkdir(filename + "/source/pages/about.markdown")
       Dir.mkdir(filename + "/source/posts")
       t = Time.new
-      Dir.mkdir(filename + "/source/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown")
+      File.write(filename + "/source/css/main.css", "")
+      File.write(filename + "/source/index.markdown", "")
+      File.write(filename + "/source/pages/about.markdown", "")
+      File.write(filename + "/source/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "")
     end
   end
 
