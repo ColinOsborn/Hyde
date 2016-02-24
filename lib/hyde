@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require "pry"
+require_relative "../lib/hyde"
+
+method = ARGV[0]
+filename = ARGV[1]
+
+if method == nil
+  puts "No function call given"
+else
+  if method == "new"
+    if filename == nil
+      puts "No filename given for new Blog"
+    else
+    f = FileManager.new
+    f.create_new_site_structure(filename)
+    end
+  end
+end
