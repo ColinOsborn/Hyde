@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require "pry"
 require_relative "../lib/hyde"
+<<<<<<< HEAD
 
 # args = ARGV
 method = ARGV[0]
@@ -20,4 +21,25 @@ Dir.mkdir(location)
 
 def new(location)
   Dir.mkdir(location)
+=======
+require_relative "../lib/file_manager"
+
+function = ARGV[0]
+filepath = ARGV[1]
+
+filemanager = FileManager.new
+
+if filepath == nil
+  puts "Missing Input Error. No filepath given"
+else
+  case function
+  when nil
+    puts "Missing Input Error. No function call given"
+  when "new"
+    filemanager.create_new_site_structure(filepath)
+  when "build"
+      builder = Build.new
+      builder.build(filepath)
+  end
+>>>>>>> ef75f4045c3632846d09e011f2f27369e193e2fb
 end
