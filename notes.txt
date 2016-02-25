@@ -1,0 +1,11 @@
+include FileUtils
+
+
+call
+  FileUtils::mkdir_p filename + "/source/css"
+creates the subfolder and all necessary parent folders
+
+
+
+using glob
+Dir.glob("#{}")
