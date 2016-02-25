@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -56,3 +57,11 @@ class HydeTest < MiniTest::Test
 
 
 end
+=======
+
+gem 'minitest'
+require_relative '../bin/hyde'
+require 'minitest/autorun'
+require 'minitest/pride'
+require 'pry'
+>>>>>>> master

@@ -1,22 +1,57 @@
 #!/usr/bin/env ruby
 require "pry"
-require_relative "../lib/hyde"
+require_relative "../lib/blog_pop"
+require_relative "../lib/file_reader"
+require_relative "../lib/file_writer"
+require_relative "../lib/file_manager"
+require_relative "../lib/site_builder"
 
 method = ARGV[0]
 filename = ARGV[1]
 
-f = FileManager.new
+file_manager = FileManager.new
+builder = SiteBuilder.new
+blog_pop = BlogPop.new
 
-case method.downcase
-when nil
-  puts "No function call given"
-when "new"
-  if filename == nil
-    puts "No filename given for new Blog"
-  else
-  f.create_new_site_structure(filename)
-  end
-when "build"
-    builder = Build.new
+if filename == nil
+  puts "No filename given"
+else
+  case method.downcase
+  when nil
+    puts "No function call given"
+  when "new"
+    file_manager.create_new_site_structure(filename)
+  when "build"
     builder.build(filename)
+  when "post"
+    if ARGV[2] == nil
+      puts "No post title given"
+    else
+      temp_array = ARGV.clone
+      2.times { temp_array.shift }
+      post_title = temp_array.join("-")
+      blog_pop.create_post(filename, post_title)
+    end
+  end
 end
+
+# args = ARGV
+# method = ARGV[0]
+# location = ARGV[1]
+#
+# Hyde.new(method, location)
+
+
+# if method == "new"
+# else
+#   "dslakjf"
+# end
+#
+# puts "You ran Hyde with these arguments: #{args}"
+
+# Dir.mkdir(location)
+#
+# def new(location)
+#   Dir.mkdir(location)
+# >>>>>>> master
+# end
