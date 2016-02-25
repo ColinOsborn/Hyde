@@ -34,24 +34,3 @@ else
     end
   end
 end
-
-# args = ARGV
-# method = ARGV[0]
-# location = ARGV[1]
-#
-# Hyde.new(method, location)
-
-
-# if method == "new"
-# else
-#   "dslakjf"
-# end
-#
-# puts "You ran Hyde with these arguments: #{args}"
-
-# Dir.mkdir(location)
-#
-# def new(location)
-#   Dir.mkdir(location)
-# >>>>>>> master
-# end
