@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+require "pry"
+require_relative "../lib/file_manager"
+
+method = ARGV[0]
+filename = ARGV[1]
+
+if method == nil
+  puts "No function call given"
+else
+  if method == "new"
+    if filename == nil
+      puts "No filename given for new Blog"
+    else
+    FileManager.new(filename)
+    end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if filename == nil
+#   filename = gets
+#   filename.chomp!
+# else
+#   filename = ARGV[0]
+# end
