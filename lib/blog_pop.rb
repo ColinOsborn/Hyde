@@ -27,18 +27,4 @@ class BlogPop
     formatted_html = ERB.new(erb_template).result(binding)
     File.write("#{file_path}/_output/posts/#{@date}-#{post_title}.html", formatted_html)
   end
-  #     so that it can access the stuff it needs to render the ERB
 end
-# def build_html_files(file_path)
-#     Dir.glob("#{file_path}/**/*.md") do |md_file_path|
-#       html_body = convert_html_from_markdown(md_file_path)
-#       contents = render_html_with_template(file_path, html_body)
-#       html_file_path = md_file_path.gsub(/.md/, ".html").sub(/source/, "output")
-#       File.write(html_file_path, contents)
-#     end
-# def save(file)
-#   File.open(file, "w+") do |f|
-#     f.write(render)
-#   end
-
-# puts output = renderer.result(list.get_binding)
