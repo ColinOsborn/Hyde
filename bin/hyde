@@ -1,22 +1,23 @@
 #!/usr/bin/env ruby
 require "pry"
 require_relative "../lib/hyde"
+require_relative "../lib/file_manager"
 
-method = ARGV[0]
-filename = ARGV[1]
+function = ARGV[0]
+filepath = ARGV[1]
 
-f = FileManager.new
+filemanager = FileManager.new
 
-case method.downcase
-when nil
-  puts "No function call given"
-when "new"
-  if filename == nil
-    puts "No filename given for new Blog"
-  else
-  f.create_new_site_structure(filename)
+if filepath == nil
+  puts "Missing Input Error. No filepath given"
+else
+  case function
+  when nil
+    puts "Missing Input Error. No function call given"
+  when "new"
+    filemanager.create_new_site_structure(filepath)
+  when "build"
+      builder = Build.new
+      builder.build(filepath)
   end
-when "build"
-    builder = Build.new
-    builder.build(filename)
 end

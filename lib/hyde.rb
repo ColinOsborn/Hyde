@@ -55,17 +55,13 @@ class SiteBuilder
       convert_to_html(filename)
     end
   end
+  <<<<<<< HEAD
 
   def convert_to_html(filename)
     content = @reader.read(filename)
     html_text = Kramdown::Document.new(content).to_html
     @writer.write(filename, html_text)
   end
-
-
-  # def build_method(file_manager, filename)
-  #   file_manager.make_basic_folders(filename)
-  # end
 
   def make_basic_files_output
     Dir.mkdir(filename + "/css")
@@ -81,16 +77,12 @@ class SiteBuilder
     File.write(filename + "/pages/about.markdown", "")
     File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "")
   end
-
-    # Create file structure in the output folder using FileManager
-
-    # Call FileManager to populate files from source to outpu
-
-    # Use FileManager to iterate through the files,
-    #  # Processing Markdown and put resulting HTML in output
+  =======
+  >>>>>>> master
 
 
-  end
+
+end
 
 
 
@@ -103,8 +95,6 @@ if __FILE__ ==$0
     when nil
       puts "No command given"
     when "new"
-        # filename = gets
-        # filename.chomp!
       f=FileManager.new
       f.create_new_site_structure(filename)
     when "build"
@@ -115,17 +105,6 @@ if __FILE__ ==$0
 end
 
 
-
-
-
-  # if ARGV[0] == nil
-  #   puts "No command given"
-  # elsif ARGV[0] == "new"
-  #
-  #
-  #
-  # end
-  # end
 
 
 
