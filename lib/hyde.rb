@@ -81,7 +81,7 @@ class SiteBuilder
     File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "")
   end
 
-  end
+end
 
 # Upon creation, markdown should pre-poulate some basic markdown i.e.
 #Blog Name

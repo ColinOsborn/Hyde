@@ -59,44 +59,41 @@ class BlogPop
 
   def initialize(post_name, template, date=Time.now)
     # 1 - read the layout file from source/layouts/default.html.erb into our template string
+    File.read("#{file_path}source/layouts/default.html.erb")
+    html_body = convert_to_html()
+    html_file_path = #markdown file located in correct directory
+    File.write()
     # 2 - render the current item (by translating its markdown to HTML) --> make this some local variable in your method
+    def render("source/layouts/default.html.erb")
+      simple_template = "Today is <%= weekday %>."
+      ERB.new().result(binding)
     # 3 - use ERB to inject that rendered html into the layout -- pass it the binding of the method you're rendering _from_
+    def render_html_with_template(file_path, html_body)
+      erb_template = File.read("#{file_path}/source/layouts/default.html.erb")
+      ERB.new(erb_template).result(binding)
+    end        @template
     #     so that it can access the stuff it needs to render the ERB
     @post_name = post_name
     @template = template
     @date
   end
-
-  def render()
-    ERB.new(@template).result(binding)
-  end
-
-  def save(file)
-    File.open(file, "w+") do |f|
-      f.write(render)
-    end
+  # def build_html_files(file_path)
+  #     Dir.glob("#{file_path}/**/*.md") do |md_file_path|
+  #       html_body = convert_html_from_markdown(md_file_path)
+  #       contents = render_html_with_template(file_path, html_body)
+  #       html_file_path = md_file_path.gsub(/.md/, ".html").sub(/source/, "output")
+  #       File.write(html_file_path, contents)
+  #     end
+  # def save(file)
+  #   File.open(file, "w+") do |f|
+  #     f.write(render)
+  #   end
   end
 
 end
 
 puts output = renderer.result(list.get_binding)
-# Upon creation, markdown should pre-poulate some basic markdown i.e.
-#Blog Name
-## Writen on date
 
-# Here's some basic text to represnt where a <p> would go to show where your blog content would be.
-# Another line of that, and so on and so on, and so on
-
-# Here's an example of a list, for instance if you wanted to post a recipe or shopping list
-#Shopping list:
-
-#  * apples
-#  * oranges
-#  * pears
-
-#A [link](http://example.com).
-
-# Done
 
 if __FILE__ ==$0
   if ARGV[1] == nil
