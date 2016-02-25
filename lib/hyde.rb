@@ -62,11 +62,6 @@ class SiteBuilder
     @writer.write(filename, html_text)
   end
 
-
-  # def build_method(file_manager, filename)
-  #   file_manager.make_basic_folders(filename)
-  # end
-
   def make_basic_files_output
     Dir.mkdir(filename + "/css")
     Dir.mkdir(filename + "/pages")
@@ -95,8 +90,6 @@ if __FILE__ ==$0
     when nil
       puts "No command given"
     when "new"
-        # filename = gets
-        # filename.chomp!
       f=FileManager.new
       f.create_new_site_structure(filename)
     when "build"
@@ -107,17 +100,6 @@ if __FILE__ ==$0
 end
 
 
-
-
-
-  # if ARGV[0] == nil
-  #   puts "No command given"
-  # elsif ARGV[0] == "new"
-  #
-  #
-  #
-  # end
-  # end
 
 
 
