@@ -55,6 +55,7 @@ class SiteBuilder
       convert_to_html(filename)
     end
   end
+  <<<<<<< HEAD
 
   def convert_to_html(filename)
     content = @reader.read(filename)
@@ -76,8 +77,12 @@ class SiteBuilder
     File.write(filename + "/pages/about.markdown", "")
     File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "")
   end
+  =======
+  >>>>>>> master
 
-  end
+
+
+end
 
 
 
