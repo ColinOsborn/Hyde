@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'kramdown'
+require 'erb'
 require_relative 'file_reader'
 require_relative 'file_writer'
 require_relative 'file_manager'
@@ -19,6 +20,8 @@ class SiteBuilder
     markdown_files = []
     markdown_files += Dir.glob(filename + "/_output/*{.markdown,.md}")
     markdown_files += Dir.glob(filename + "/_output/*/*{.markdown,.md}")
+    # Add a step here to generate the default layout file and populate it with canned content
+    # (should go in source/layouts/default.html.erb)
     markdown_files.each do |filename|
       convert_to_html(filename)
     end
@@ -45,13 +48,38 @@ class SiteBuilder
     t = Time.new
     File.write(filename + "/css/main.css", "")
     File.write(filename + "/index.markdown", "")
-    File.write(filename + "/pages/about.markdown", "")
+    File.write(filename + "/pages/about.markdown", "# About Page\n\nhere's the about page")
     File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "")
   end
 
+end
+
+class BlogPop
+  include ERB::Util
+
+  def initialize(post_name, template, date=Time.now)
+    # 1 - read the layout file from source/layouts/default.html.erb into our template string
+    # 2 - render the current item (by translating its markdown to HTML) --> make this some local variable in your method
+    # 3 - use ERB to inject that rendered html into the layout -- pass it the binding of the method you're rendering _from_
+    #     so that it can access the stuff it needs to render the ERB
+    @post_name = post_name
+    @template = template
+    @date
   end
 
+  def render()
+    ERB.new(@template).result(binding)
+  end
 
+  def save(file)
+    File.open(file, "w+") do |f|
+      f.write(render)
+    end
+  end
+
+end
+
+puts output = renderer.result(list.get_binding)
 # Upon creation, markdown should pre-poulate some basic markdown i.e.
 #Blog Name
 ## Writen on date
