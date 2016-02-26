@@ -27,7 +27,6 @@ class SiteBuilder
       content = @reader.read(filename)
       content = convert_to_html(content)
       @writer.write(filename.gsub(".markdown", ".html"), content)
-      puts filename
       File.delete(filename)
     end
   end
