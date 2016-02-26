@@ -22,8 +22,9 @@ class BlogPop
 
   def render_html_with_template(file_path, post_title)
     # 1 - read the layout file from source/layouts/default.html.erb into our template string
-    erb_template = File.read("#{file_path}/source/layouts/default.html.erb")
+    erb_template = File.read("#{file_path}/_output/layouts/default.html.erb")
     post_title_no_dash = builder.convert_to_html( post_title.gsub("-"," ") )
+    post_title_no_dash = post_title.gsub("-"," ") 
     body = ERB.new(erb_template).result(binding)
     File.write("#{file_path}/_output/posts/#{@date}-#{post_title}.html", body)
   end

@@ -16,8 +16,6 @@ class SiteBuilder
   end
 
   def build(filename)
-    # require "pry"
-    # binding.pry
     FileUtils.copy_entry(filename + "/source/", filename + "/_output/")
     FileUtils.copy_entry("./lib/default.html.erb", filename + "/_output/layouts/default.html.erb" )
     markdown_files = []
@@ -26,35 +24,17 @@ class SiteBuilder
     # Add a step here to generate the default layout file and populate it with canned content
     # (should go in source/layouts/default.html.erb)
     markdown_files.each do |filename|
-      convert_to_html(filename)
+      content = @reader.read(filename)
+      content = convert_to_html(content)
+      @writer.write(filename.gsub(".markdown", ".html"), content)
+      puts filename
+      File.delete(filename)
     end
   end
 
-  def convert_to_html(filename)
-    content = @reader.read(filename)
+  def convert_to_html(content)
     html_text = Kramdown::Document.new(content).to_html
-    @writer.write(filename, html_text)
   end
-
-  # def build_method(file_manager, filename)
-  #   file_manager.make_basic_folders(filename)
-  # end
-
-  # def make_basic_files_output
-  #   Dir.mkdir(filename + "/css")
-  #   Dir.mkdir(filename + "/pages")
-  #   Dir.mkdir(filename + "/posts")
-  #   Dir.mkdir(filename + "/layouts")
-  # end
-
-  # def make_output_files
-  #   t = Time.new
-  #   FileUtils.copy_entry("default.html.erb", filename + "/_output/layouts/" )
-  #   File.write(filename + "/css/main.css", "data set")
-  #   File.write(filename + "/index.html", "temp")
-  #   File.write(filename + "/pages/about.html", "# About Page\n\nhere's the about page")
-  #   File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.html", "Trying a ")
-  # end
 
 end
 
