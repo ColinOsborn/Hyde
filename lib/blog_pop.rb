@@ -18,8 +18,3 @@ class BlogPop
     File.write("#{file_path}/_output/posts/#{@date}-#{post_title}.html", body)
   end
 end
-
-
-# 1 - read the layout file from source/layouts/default.html.erb into our template string
-# 2 - render the current item (by translating its markdown to HTML) --> make this some local variable in your method
-# 3 - use ERB to inject that rendered html into the layout -- pass it the binding of the method you're rendering _from_

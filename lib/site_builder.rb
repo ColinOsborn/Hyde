@@ -21,8 +21,6 @@ class SiteBuilder
     markdown_files = []
     markdown_files += Dir.glob(filename + "/_output/*{.markdown,.md}")
     markdown_files += Dir.glob(filename + "/_output/*/*{.markdown,.md}")
-    # Add a step here to generate the default layout file and populate it with canned content
-    # (should go in source/layouts/default.html.erb)
     markdown_files.each do |filename|
       content = @reader.read(filename)
       content = convert_to_html(content)
@@ -47,8 +45,6 @@ if __FILE__ ==$0
     when nil
       puts "No command given"
     when "new"
-      # filename = gets
-      # filename.chomp!
       f=FileManager.new
       f.create_new_site_structure(filename)
     when "build"

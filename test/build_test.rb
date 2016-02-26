@@ -85,20 +85,4 @@ class BuildTest < MiniTest::Test
     assert File.exist?(filename + "/_output/posts/#{t.strftime("%F")}-welcome-to-hyde.html")
     FileUtils::remove_dir(filename, true)
   end
-
-  #-----------------------------
-  # Lets assume we're going to do the posts from inside SiteBuilder
-
-  # def test_it_takes_the_root_location_and_title_of_a_post_and_creates_a_new_post_in__output_posts_folder
-  #   skip
-  #   filename = "testfile"
-  #   f.create_new_site_structure(filename)
-  #   b.build(filename)
-  #
-  #   b.post(title)
-  #   t=Time.new
-  #   assert File.exist?(filename + "/_output/posts/#{t.strftime("%F")}-post.html")
-  #   FileUtils::remove_dir(filename, true)
-  # end
-
 end
