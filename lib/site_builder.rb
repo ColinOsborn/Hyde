@@ -1,6 +1,6 @@
-require 'fileutils'
 require 'kramdown'
 require 'erb'
+require 'fileutils'
 require_relative 'file_reader'
 require_relative 'file_writer'
 require_relative 'file_manager'
@@ -16,7 +16,10 @@ class SiteBuilder
   end
 
   def build(filename)
+    # require "pry"
+    # binding.pry
     FileUtils.copy_entry(filename + "/source/", filename + "/_output/")
+    FileUtils.copy_entry("./lib/default.html.erb", filename + "/_output/layouts/default.html.erb" )
     markdown_files = []
     markdown_files += Dir.glob(filename + "/_output/*{.markdown,.md}")
     markdown_files += Dir.glob(filename + "/_output/*/*{.markdown,.md}")
@@ -37,20 +40,21 @@ class SiteBuilder
   #   file_manager.make_basic_folders(filename)
   # end
 
-  def make_basic_files_output
-    Dir.mkdir(filename + "/css")
-    Dir.mkdir(filename + "/pages")
-    Dir.mkdir(filename + "/posts")
-    Dir.mkdir(filename + "/layouts")
-  end
+  # def make_basic_files_output
+  #   Dir.mkdir(filename + "/css")
+  #   Dir.mkdir(filename + "/pages")
+  #   Dir.mkdir(filename + "/posts")
+  #   Dir.mkdir(filename + "/layouts")
+  # end
 
-  def make_output_files
-    t = Time.new
-    File.write(filename + "/css/main.css", "data set")
-    File.write(filename + "/index.html", "temp")
-    File.write(filename + "/pages/about.html", "# About Page\n\nhere's the about page")
-    File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.html", "Trying a ")
-  end
+  # def make_output_files
+  #   t = Time.new
+  #   FileUtils.copy_entry("default.html.erb", filename + "/_output/layouts/" )
+  #   File.write(filename + "/css/main.css", "data set")
+  #   File.write(filename + "/index.html", "temp")
+  #   File.write(filename + "/pages/about.html", "# About Page\n\nhere's the about page")
+  #   File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.html", "Trying a ")
+  # end
 
 end
 
