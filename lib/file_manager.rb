@@ -27,10 +27,10 @@ class FileManager
   end
 
   def make_starting_files(filename)
-    File.write(filename + "/css/main.css", "this")
-    File.write(filename + "/index.markdown", "IS")
-    File.write(filename + "/pages/about.markdown", "test")
+    File.write(filename + "/css/main.css", "h1 {font-size: 18px; color: firebrick} \np { font-family: Times New Roman }")
+    File.write(filename + "/index.markdown", "Main Page")
+    File.write(filename + "/pages/about.markdown", "About page")
     t = Time.new
-    File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "data")
+    File.write(filename + "/posts/" + t.strftime("%F") + "-welcome-to-hyde.markdown", "Welcome!")
   end
 end

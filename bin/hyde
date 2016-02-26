@@ -16,7 +16,7 @@ blog_pop = BlogPop.new
 if filename == nil
   puts "No filename given"
 else
-  case method.downcase
+  case method
   when nil
     puts "No function call given"
   when "new"
